@@ -1,0 +1,234 @@
+.clearfix:after {
+  display: table;
+  height: 0;
+  content: '';
+  clear: both;
+}
+
+.todoapp {
+  position: relative;
+}
+
+/* main */
+
+.main {
+  border-top: 1px solid #e6e6e6
+}
+
+.todo-list li {
+  border-bottom: 1px solid #e6e6e6;
+  position: relative;
+}
+
+.todo-list li.editing .view {
+  display: none;
+}
+
+.todo-list li.completed label {
+  color: #d9d9d9;
+  text-decoration: line-through;
+}
+
+.toggle {
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto 0;
+  border: none; /* Mobile Safari */
+  -webkit-appearance: none;
+  cursor: pointer;
+}
+
+.view.editing {
+  display: none;
+}
+
+.edit {
+  padding: 10px 8px;
+  width: calc(100% - 60px);
+  margin: 3px 10px 3px 50px;
+  border: 1px solid #cc9a9a;
+  border-radius: 3px;
+  font-size: 16px;
+}
+
+/* toggle all */
+label[for='toggle-all'] {
+  display: none;
+}
+
+.toggle-all {
+  position: absolute;
+  top: 8px;
+  left: 0;
+
+  margin: 0;
+  width: 45px;
+  height: 34px;
+  text-align: center;
+  border: none; /* Mobile Safari */
+  transform: rotate(90deg);
+  cursor: pointer;
+}
+
+.toggle-all:before {
+  content: '❯';
+  font-size: 22px;
+  color: #e6e6e6;
+  padding: 10px 15px 10px 15px;
+  background: #fff;
+}
+
+.toggle-all:checked:before {
+  color: #737373;
+}
+
+.toggle:after {
+  content : url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#ededed" stroke-width="3"/></svg>');
+}
+
+.toggle:checked:after {
+  content : url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="-10 -18 100 135"><circle cx="50" cy="50" r="50" fill="none" stroke="#bddad5" stroke-width="3"/><path fill="#5dc2af" d="M72 25L42 71 27 56l-4 4 20 20 34-52z"/></svg>');
+}
+
+.todo-list li label {
+  display: block;
+  margin-left: 50px;
+  padding: 15px 50px 15px 0;
+  font-weight: bold;
+}
+
+.destroy {
+  position: absolute;
+  top: 0;
+  right: 5px;
+  bottom: 0;
+  width: 40px;
+  height: 40px;
+  margin: auto 0;
+  font-size: 25px;
+  color: #cc9a9a;
+  transition: color 0.2s ease-out;
+  cursor: pointer;
+}
+
+.todo-list li .destroy:after {
+  content: 'x';
+}
+
+.footer {
+  padding: 15px 8px 25px 8px;
+}
+
+.footer:before {
+  content: '';
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 20px;
+  overflow: hidden;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.2),
+  0 8px 0 -3px #f6f6f6,
+  0 9px 1px -3px rgba(0, 0, 0, 0.2),
+  0 16px 0 -6px #f6f6f6,
+  0 17px 2px -6px rgba(0, 0, 0, 0.2);
+}
+
+.item-counter strong {
+  font-weight: normal;
+  display: inline-block;
+  margin-right: 10px;
+  /* поменять для больших экранов !!!!!!! */
+}
+
+.aside {
+  margin-top: 15px;
+  width: 100%;
+}
+
+.aside li {
+  display: inline-block;
+}
+
+.aside li a {
+  padding: 5px 8px;
+  border: 1px solid transparent;
+  border-radius: 3px;
+  color: #4d4d4d;
+}
+
+.aside li a:hover {
+  border-color: rgba(175, 47, 47, 0.1);
+}
+
+.aside li a.active-state {
+  border: 1px solid #cc9a9a;
+  border-radius: 3px;
+}
+
+.clear-active {
+  padding: 3px 5px;
+  border: 1px solid #cc9a9a;
+  border-radius: 3px;
+}
+
+.clear-completed {
+  cursor: pointer;
+}
+
+.clear-completed:hover {
+  text-decoration: underline;
+}
+
+.share {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  border: 1px solid rgba(175, 47, 47, 0.1);
+  text-align: center;
+  padding: 5px 8px;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.share:hover {
+  border: 1px solid #cc9a9a;
+}
+
+@media only screen and (min-width : 768px) {
+
+  .todoapp {
+    width: 700px;
+  }
+
+  .destroy {
+    display: none;
+  }
+
+  .todo-list li:hover .destroy {
+    display: block;
+  }
+
+  .item-counter {
+    width: 75px;
+    float: left;
+  }
+
+  .aside {
+    width: calc(100% - 25% - 75px);
+    float: left;
+    margin-left: 25%;
+    margin-top: 0;
+  }
+
+  .aside li:last-child {
+    float: right;
+    margin-right: 10px;
+  }
+
+}

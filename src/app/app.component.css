@@ -1,0 +1,30 @@
+.nav {
+  padding: 10px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  display: table;
+  width: 100%;
+}
+
+.footer {
+  padding: 15px 8px;
+}
+
+
+
+.nav .btn {
+  display: table-cell;
+}
+
+.btn {
+  padding: 3px 5px;
+  margin-left: 10px;
+  border: 1px solid transparent;
+  color: #000;
+  text-align: center;
+}
+
+.active-state {
+  border: 1px solid #cc9a9a;
+  border-radius: 3px;
+}
+

@@ -1,0 +1,41 @@
+<div class="todoapp">
+  <button class="share">Share</button>
+  <todo-form (update)="addTodo($event)"></todo-form>
+  <div class="main" *ngIf="todos.length > 0">
+    <input class="toggle-all" type="checkbox" #toggleall  (click)="toggleAll(toggleall.checked)" [checked]="allCompleted()">
+    <ul class="todo-list">
+      <li *ngFor="let todo of todos | statePipe: stateParams" [class.completed]="todo.complete">
+        <div class="view" [class.editing]="todo.editing">
+          <input class="toggle"
+                 type="checkbox"
+                 (click)="toggleTodoComplete(todo)"
+                 [checked]="todo.complete"
+          >
+          <label (dblclick)="edit(todo)">{{todo.title}}</label>
+          <button class="destroy"
+                  (click)="deleteTodo(todo)"
+          ></button>
+        </div>
+        <input type="text"
+               class="edit"
+               focus="true"
+               #newValue
+               *ngIf="todo.editing"
+               [value]="todo.title"
+               (keyup.enter)="updateTitle(todo, newValue)"
+               (blur)="stopEditing(todo)"
+               (keyup.escape)="stopEditing(todo)"
+        >
+      </li>
+    </ul>
+  </div>
+  <footer class="footer clearfix" *ngIf="todos.length > 0">
+    <span class="item-counter"><strong>{{getCount()}}</strong>{{getCount() == 1 ? 'item' : 'items'}} left</span>
+    <ul class="aside clearfix">
+      <li><a class="btn"  routerLink="" [class.active-state]="stateParams == 'all'">All</a></li>
+      <li><a class="btn"  routerLink="/active"  [class.active-state]="stateParams == 'active'">Active</a></li>
+      <li><a class="btn"  routerLink="/completed"  [class.active-state]="stateParams == 'completed'">Completed</a></li>
+      <li><button class="clear-completed" *ngIf="getCompleted()" (click)="deleteCompleted()">Clear completed</button></li>
+    </ul>
+  </footer>
+</div>
