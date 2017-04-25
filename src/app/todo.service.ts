@@ -158,7 +158,7 @@ export class TodoService {
   // changeState
   setState(id){
     this.todos = JSON.parse(localStorage.getItem(id));
-    this.updateLocalStorage();
+    localStorage.setItem('Todo[Polishuk-Oleg]', JSON.stringify(this.todos));
   }
 
 }

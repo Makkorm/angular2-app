@@ -23,7 +23,7 @@ export class ShareComponent implements OnInit {
     let parsedId = this.route.params.value.id; // id
 
     this.todoService.setState(parsedId);
-    this.router.navigate(['']);
+    this.router.navigate([''],);
   }
 
 }
