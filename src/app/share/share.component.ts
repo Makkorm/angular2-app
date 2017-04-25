@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PlatformLocation } from '@angular/common';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { TodoService } from '../todo.service';
 
@@ -12,14 +12,15 @@ import { TodoService } from '../todo.service';
 export class ShareComponent implements OnInit {
 
   logAppStart: any;
+  route: any;
 
-  constructor(platformLocation: PlatformLocation, private router: Router,  private todoService: TodoService) {
+  constructor(platformLocation: PlatformLocation, private router: Router,  private todoService: TodoService, route: ActivatedRoute) {
     this.logAppStart = platformLocation;
+    this.route = route;
   }
 
   ngOnInit() {
-    let path = this.logAppStart.pathname,
-      parsedId = path.split('/')[2]; // id
+    let parsedId = this.route.params.value.id; // id
 
     this.todoService.setState(parsedId);
     this.router.navigate(['']);
