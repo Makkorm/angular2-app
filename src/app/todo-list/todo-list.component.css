@@ -170,6 +170,15 @@ label[for='toggle-all'] {
   border-radius: 3px;
 }
 
+popup .popup-btn {
+  padding: 5px 8px;
+  border: 1px solid #cc9a9a;
+  border-radius: 3px;
+  color: #4d4d4d;
+  cursor: pointer;
+}
+
+
 .clear-active {
   padding: 3px 5px;
   border: 1px solid #cc9a9a;

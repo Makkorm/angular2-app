@@ -1,5 +1,6 @@
-import {Component, OnInit, DoCheck} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import {Popup} from 'ng2-opd-popup';
 
 import { Todo } from '../Todo';
 import { TodoService } from '../todo.service';
@@ -16,10 +17,21 @@ export class TodoListComponent implements OnInit {
   route: any;
   stateParams: string;
 
-  constructor( private todoService: TodoService, route: ActivatedRoute ) {
+  constructor( private todoService: TodoService, route: ActivatedRoute, private popup:Popup ) {
     this.todos = [];
     this.route = route;
     this.stateParams = '';
+
+    this.popup.options = {
+      header: "Share URL",
+      color: "#cc9a9a",
+      showButtons: true, // You can hide this in case you want to use custom buttons
+      confirmBtnContent: "OK", // The text on your confirm button
+      cancleBtnContent: "Ok", // the text on your cancel button
+      confirmBtnClass: "hide", // your class for styling the confirm button
+      cancleBtnClass: "popup-btn", // you class for styling the cancel button
+      animation: "fadeInDown" // 'fadeInLeft', 'fadeInRight', 'fadeInUp', 'bounceIn','bounceInDown'
+    };
   }
 
   ngOnInit() {
@@ -74,6 +86,11 @@ export class TodoListComponent implements OnInit {
 
   stopEditing(todo){
     this.todoService.stopEditing(todo);
+  }
+
+  showPopUp(){
+    console.log('s')
+    this.popup.show(this.popup.options);
   }
 
 }

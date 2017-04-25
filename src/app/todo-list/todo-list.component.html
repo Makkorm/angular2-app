@@ -1,5 +1,5 @@
 <div class="todoapp">
-  <button class="share">Share</button>
+  <button class="share" (click)="showPopUp()">Share</button>
   <todo-form (update)="addTodo($event)"></todo-form>
   <div class="main" *ngIf="todos.length > 0">
     <input class="toggle-all" type="checkbox" #toggleall  (click)="toggleAll(toggleall.checked)" [checked]="allCompleted()">
@@ -39,3 +39,6 @@
     </ul>
   </footer>
 </div>
+<popup>
+  <p>asdfasfasf</p>
+</popup>

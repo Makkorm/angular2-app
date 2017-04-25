@@ -3,7 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
-import {FocusModule} from 'angular2-focus';
+import { FocusModule } from 'angular2-focus';
+import { PopupModule } from 'ng2-opd-popup';
 
 import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
@@ -22,6 +23,7 @@ import { StatePipe } from './state.pipe';
     BrowserModule,
     FormsModule,
     HttpModule,
+    PopupModule.forRoot(),
     FocusModule.forRoot(),
     RouterModule.forRoot([
       {

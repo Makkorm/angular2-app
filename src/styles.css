@@ -55,4 +55,14 @@ button {
   color: rgba(175, 47, 47, 0.5);
 }
 
+.hide {
+  display: none;
+}
 
+popup .popup-btn {
+  padding: 5px 8px;
+  border: 1px solid #cc9a9a;
+  border-radius: 3px;
+  color: #4d4d4d;
+  cursor: pointer;
+}
