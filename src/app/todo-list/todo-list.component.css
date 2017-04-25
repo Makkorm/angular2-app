@@ -178,6 +178,13 @@ popup .popup-btn {
   cursor: pointer;
 }
 
+.share-url {
+  width: 100%;
+  margin: 0 auto;
+  min-height: 80%;
+  max-height: 80%;
+  resize: none;
+}
 
 .clear-active {
   padding: 3px 5px;

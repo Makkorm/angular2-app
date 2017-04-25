@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
+
 import { FocusModule } from 'angular2-focus';
 import { PopupModule } from 'ng2-opd-popup';
 
@@ -11,6 +12,7 @@ import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoFormComponent } from './todo-form/todo-form.component';
 import { TodoService } from './todo.service';
 import { StatePipe } from './state.pipe';
+import { ShareComponent } from './share/share.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +20,7 @@ import { StatePipe } from './state.pipe';
     TodoListComponent,
     TodoFormComponent,
     StatePipe,
+    ShareComponent,
   ],
   imports: [
     BrowserModule,
@@ -41,6 +44,10 @@ import { StatePipe } from './state.pipe';
         path: 'completed',
         component: TodoListComponent,
         data: {title: 'completed'}
+      },
+      {
+        path: 'share/:id',
+        component: ShareComponent
       },
       {
         path: '**',

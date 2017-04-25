@@ -1,9 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import {Popup} from 'ng2-opd-popup';
+import { PlatformLocation } from '@angular/common';
+import { Popup } from 'ng2-opd-popup';
+
 
 import { Todo } from '../Todo';
 import { TodoService } from '../todo.service';
+import { UUID } from 'angular2-uuid';
 
 
 @Component({
@@ -16,11 +19,17 @@ export class TodoListComponent implements OnInit {
   todos: Todo[];
   route: any;
   stateParams: string;
+  logAppStart: any;
+  baseUrl: string;
+  shareUrl: string;
 
-  constructor( private todoService: TodoService, route: ActivatedRoute, private popup:Popup ) {
+  constructor( private todoService: TodoService, route: ActivatedRoute, private popup:Popup, platformLocation: PlatformLocation ) {
     this.todos = [];
     this.route = route;
     this.stateParams = '';
+    this.logAppStart = platformLocation;
+    this.baseUrl = this.logAppStart.location.href;
+    this.shareUrl = '';
 
     this.popup.options = {
       header: "Share URL",
@@ -89,8 +98,14 @@ export class TodoListComponent implements OnInit {
   }
 
   showPopUp(){
-    console.log('s')
+    let currentState = this.todos,
+        id = UUID.UUID(),
+        shareUrl = this.baseUrl + 'share/'+ id;
+
+    this.shareUrl = shareUrl;
     this.popup.show(this.popup.options);
+
+    this.todoService.putCurrentState(currentState, id);
   }
 
 }

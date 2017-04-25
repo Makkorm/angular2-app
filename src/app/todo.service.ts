@@ -139,13 +139,25 @@ export class TodoService {
     this.updateLocalStorage();
   }
 
-  stopEditing(todo){
+  stopEditing(todo) {
     let editTodo = todo,
       index = this.todos.indexOf(todo);
 
     editTodo.editing = false;
     this.todos[index] = editTodo;
 
+    this.updateLocalStorage();
+  }
+
+  // popup share
+  putCurrentState(currentState, id) {
+    let jsonState = JSON.stringify(currentState);
+    localStorage.setItem(id, jsonState);
+  }
+
+  // changeState
+  setState(id){
+    this.todos = JSON.parse(localStorage.getItem(id));
     this.updateLocalStorage();
   }
 
